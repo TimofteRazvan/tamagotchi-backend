@@ -5,6 +5,8 @@ import com.example.tamagotchibackend.Domain.User;
 import com.example.tamagotchibackend.Domain.UserDTO;
 import com.example.tamagotchibackend.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +33,22 @@ public class UserController {
         return userService.login(userDTO.getUsername(), userDTO.getPassword());
     }
 
+    @PostMapping("/register")
+    public User register(@RequestBody UserDTO userDTO) {
+        User user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(userDTO.getPassword());
+        user.setTamagotchi("");
+        user.setHunger(100);
+        user.setHappiness(100);
+        return userService.saveUser(user);
+    }
+
+    @PostMapping("/create-tamagotchi/{id}")
+    public User createTamagotchi(@PathVariable Integer id, @RequestBody String name) {
+        return userService.createTamagotchi(id, name);
+    }
+
     @GetMapping("/home/{id}")
     public Status home(@PathVariable Integer id) {
         return userService.getStatus(id);
@@ -39,5 +57,10 @@ public class UserController {
     @PostMapping("/update-status/{id}")
     public Status updateStatus(@PathVariable Integer id, @RequestBody Status status) {
         return userService.updateStatus(status, id);
+    }
+
+    @GetMapping("/kill-tamagotchi/{id}")
+    public String killTamagotchi(@PathVariable Integer id) {
+        return userService.killTamagotchi(id);
     }
 }
