@@ -35,4 +35,9 @@ public class UserController {
     public Status home(@PathVariable Integer id) {
         return userService.getStatus(id);
     }
+
+    @PostMapping("/update-status/{id}")
+    public Status updateStatus(@PathVariable Integer id, @RequestBody Status status) {
+        return userService.updateStatus(status, id);
+    }
 }

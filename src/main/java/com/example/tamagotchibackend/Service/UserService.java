@@ -31,4 +31,12 @@ public class UserService {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("getStatus: No such user!"));
         return new Status(user.getHunger(), user.getHappiness());
     }
+
+    public Status updateStatus(Status status, Integer userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("getStatus: No such user!"));
+        user.setHappiness(status.getHappiness());
+        user.setHunger(status.getHunger());
+        userRepository.save(user);
+        return new Status(user.getHunger(), user.getHappiness());
+    }
 }
