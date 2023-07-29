@@ -1,5 +1,6 @@
 package com.example.tamagotchibackend.Service;
 
+import com.example.tamagotchibackend.Domain.Tamagotchi;
 import com.example.tamagotchibackend.Domain.User;
 import com.example.tamagotchibackend.Domain.Status;
 import com.example.tamagotchibackend.Repository.UserRepository;
@@ -18,7 +19,8 @@ public class UserService {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        user.setTamagotchi("");
+        user.setTamagotchiName("");
+        user.setTamagotchiSpecies("");
         user.setHunger(100);
         user.setHappiness(100);
         user.setCleanliness(100);
@@ -36,9 +38,10 @@ public class UserService {
         }
     }
 
-    public User createTamagotchi(Integer id, String name) {
+    public User createTamagotchi(Integer id, Tamagotchi tamagotchi) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("getStatus: No such user!"));
-        user.setTamagotchi(name);
+        user.setTamagotchiName(tamagotchi.getName());
+        user.setTamagotchiSpecies(tamagotchi.getSpecies());
         user.setHappiness(100);
         user.setHunger(100);
         user.setCleanliness(100);
@@ -48,7 +51,8 @@ public class UserService {
 
     public String killTamagotchi(Integer id) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("getStatus: No such user!"));
-        user.setTamagotchi("");
+        user.setTamagotchiName("");
+        user.setTamagotchiSpecies("");
         userRepository.save(user);
         return "OK";
     }

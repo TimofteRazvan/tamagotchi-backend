@@ -1,6 +1,7 @@
 package com.example.tamagotchibackend.Controller;
 
 import com.example.tamagotchibackend.Domain.Status;
+import com.example.tamagotchibackend.Domain.Tamagotchi;
 import com.example.tamagotchibackend.Domain.User;
 import com.example.tamagotchibackend.Domain.UserDTO;
 import com.example.tamagotchibackend.Service.UserService;
@@ -39,8 +40,8 @@ public class UserController {
     }
 
     @PostMapping("/create-tamagotchi/{id}")
-    public User createTamagotchi(@PathVariable Integer id, @RequestBody String name) {
-        return userService.createTamagotchi(id, name);
+    public User createTamagotchi(@PathVariable Integer id, @RequestBody Tamagotchi tamagotchi) {
+        return userService.createTamagotchi(id, tamagotchi);
     }
 
     @GetMapping("/home/{id}")

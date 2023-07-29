@@ -20,7 +20,8 @@ public class User {
     private String username;
     private String password;
     // No reason for a one-to-one relationship, as a user cannot NOT have a tamagotchi.
-    private String tamagotchi;
+    private String tamagotchiName;
+    private String tamagotchiSpecies;
     private int hunger;
     private int happiness;
     private int cleanliness;
