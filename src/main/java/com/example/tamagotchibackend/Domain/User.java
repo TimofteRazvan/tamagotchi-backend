@@ -23,4 +23,6 @@ public class User {
     private String tamagotchi;
     private int hunger;
     private int happiness;
+    private int cleanliness;
+    private int age;
 }

@@ -12,4 +12,6 @@ import lombok.Setter;
 public class Status {
     private int hunger;
     private int happiness;
+    private int cleanliness;
+    private int age;
 }

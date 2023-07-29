@@ -35,13 +35,7 @@ public class UserController {
 
     @PostMapping("/register")
     public User register(@RequestBody UserDTO userDTO) {
-        User user = new User();
-        user.setUsername(userDTO.getUsername());
-        user.setPassword(userDTO.getPassword());
-        user.setTamagotchi("");
-        user.setHunger(100);
-        user.setHappiness(100);
-        return userService.saveUser(user);
+        return userService.saveUser(userDTO.getUsername(), userDTO.getPassword());
     }
 
     @PostMapping("/create-tamagotchi/{id}")

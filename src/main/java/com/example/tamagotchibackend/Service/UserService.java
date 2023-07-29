@@ -14,7 +14,15 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public User saveUser(User user) {
+    public User saveUser(String username, String password) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setTamagotchi("");
+        user.setHunger(100);
+        user.setHappiness(100);
+        user.setCleanliness(100);
+        user.setAge(0);
         return userRepository.save(user);
     }
 
@@ -33,6 +41,8 @@ public class UserService {
         user.setTamagotchi(name);
         user.setHappiness(100);
         user.setHunger(100);
+        user.setCleanliness(100);
+        user.setAge(0);
         return userRepository.save(user);
     }
 
@@ -45,14 +55,20 @@ public class UserService {
 
     public Status getStatus(Integer userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("getStatus: No such user!"));
-        return new Status(user.getHunger(), user.getHappiness());
+        return new Status(user.getHunger(), user.getHappiness(), user.getCleanliness(), user.getAge());
     }
 
     public Status updateStatus(Status status, Integer userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("getStatus: No such user!"));
-        user.setHappiness(status.getHappiness());
-        user.setHunger(status.getHunger());
+        int happiness = status.getHappiness();
+        int hunger = status.getHunger();
+        int cleanliness = status.getCleanliness();
+        int age = status.getAge();
+        user.setHappiness(happiness);
+        user.setHunger(hunger);
+        user.setCleanliness(cleanliness);
+        user.setAge(age);
         userRepository.save(user);
-        return new Status(user.getHunger(), user.getHappiness());
+        return new Status(hunger, happiness, cleanliness, age);
     }
 }
