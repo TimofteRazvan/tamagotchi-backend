@@ -7,6 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * User class contains information about each user that has been registered.
+ * NO separate Tamagotchi class, as there can be no Tamagotchi without an user, and every user must have a Tamagotchi.
+ */
 @Entity
 @Table(name = "users")
 @NoArgsConstructor

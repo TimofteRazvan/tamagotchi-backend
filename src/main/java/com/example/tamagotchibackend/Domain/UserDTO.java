@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Data Transfer Object that allows transferring only the relevant information for logging in / registering users.
+ */
 @Getter
 @Setter
 @AllArgsConstructor
