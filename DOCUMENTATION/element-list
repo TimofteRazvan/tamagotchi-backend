@@ -1,0 +1,5 @@
+com.example.tamagotchibackend
+com.example.tamagotchibackend.Controller
+com.example.tamagotchibackend.Domain
+com.example.tamagotchibackend.Repository
+com.example.tamagotchibackend.Service

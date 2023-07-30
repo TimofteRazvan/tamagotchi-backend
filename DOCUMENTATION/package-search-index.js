@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.example.tamagotchibackend"},{"l":"com.example.tamagotchibackend.Controller"},{"l":"com.example.tamagotchibackend.Domain"},{"l":"com.example.tamagotchibackend.Repository"},{"l":"com.example.tamagotchibackend.Service"}];updateSearchResults();
