@@ -2,6 +2,11 @@
 
 INTELLIJ JAVADOC DOCUMENTATION PROVIDED IN /DOCUMENTATION/
 
+NOTE: This game is similar to the old Tamagotchi games, where the device had to be on in order for the Tamagotchi to change
+(meaning that the user must be logged in for his Tamagotchi to lose stats).
+For having the stats decrease even while the user isn't logged in, Websockets would be used, or the front-end would have to
+send GET requests every second (or time unit) to acquire the new status of the Tamagotchi). I opted for the original version.
+
 - <h3>IDEs:</h3>
 1. IntelliJ IDEA		   2022.2.2 (Runtime version 17.0.4+7)
 2. Visual Studio Code 		   1.80.2
